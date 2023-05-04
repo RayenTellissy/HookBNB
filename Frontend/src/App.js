@@ -18,9 +18,13 @@ function App() {
     axios.get(url).then(res=>setData(res.data))
   },[])
 
+  const filterData=(query)=>{
+    setFiltered(data.filter(e=>e.title.toUpperCase().includes(query.toUpperCase()) || e.location.toUpperCase().includes(query.toUpperCase())))
+  }
+
   return (
     <Routes>
-      <Route path="/" element={<Main data={data}/>}/>
+      <Route path="/" element={<Main data={filtered.length>0 ? filtered : data} filterData={filterData}/>}/>
       <Route path="/sell" element={<Sell/>}/>
       <Route path="/house/:id" element={<HouseDetails data={data}/>}/>
       <Route path='/edit/:id' element={<Edit/>}/>

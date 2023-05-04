@@ -6,7 +6,7 @@ import "./Navbar.css"
 import logo from "../../images/logo.png"
 import sell from "../../images/sell.jpg"
 
-const Navbar=()=>{
+const Navbar=({filterData})=>{
   const navigate=useNavigate()
   
   const redirectSell=()=>{
@@ -24,7 +24,7 @@ const Navbar=()=>{
         <h3 id="logo-title">HookBNB</h3>
       </div>
 
-      {<Search/>}
+      {<Search filterData={filterData}/>}
 
       <motion.div whileHover={{scale: 1.1}} className="nav-child" onClick={redirectSell}>
         <p id="sell-title">HookBNB your home</p>

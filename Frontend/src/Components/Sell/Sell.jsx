@@ -7,7 +7,7 @@ import logo from "../../images/logo.png"
 
 const url="http://localhost:3001/houses/sell"
 
-const Sell=()=>{
+const Sell=({setData})=>{
   const [user,setUser]=useState("")
   const [password,setPassword]=useState("")
   const [title,setTitle]=useState("")
