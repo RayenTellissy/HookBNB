@@ -13,9 +13,14 @@ const url="http://localhost:3001/houses/getAll"
 function App() {
   const [data,setData]=useState([])
   const [filtered,setFiltered]=useState([])
+  const [currentUser,setCurrentUser]=useState({})
+
+  const fetchData=()=>{
+    axios.get(url).then(res=>setData(res.data))
+  }
 
   useEffect(()=>{
-    axios.get(url).then(res=>setData(res.data))
+    fetchData()
   },[])
 
   const filterData=(query)=>{
@@ -24,10 +29,10 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Main data={filtered.length>0 ? filtered : data} filterData={filterData}/>}/>
-      <Route path="/sell" element={<Sell/>}/>
-      <Route path="/house/:id" element={<HouseDetails data={data}/>}/>
-      <Route path='/edit/:id' element={<Edit/>}/>
+      <Route path="/" element={<Main data={filtered} filterData={filterData}/>}/>
+      <Route path="/sell" element={<Sell fetchData={fetchData}/>}/>
+      <Route path="/house/:id" element={<HouseDetails data={data} fetchData={fetchData}/>}/>
+      <Route path='/edit/:id' element={<Edit fetchData={fetchData}/>}/>
     </Routes>
   )
 }

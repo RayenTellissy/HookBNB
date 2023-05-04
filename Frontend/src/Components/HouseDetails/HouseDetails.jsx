@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import "./HouseDetails.css"
 
 
-const HouseDetails=()=>{
+const HouseDetails=({fetchData})=>{
   const { id }=useParams()
   const navigate=useNavigate()
   const [house,setHouse]=useState({})
@@ -16,8 +16,13 @@ const HouseDetails=()=>{
     navigate(`/edit/${id}`)
   }
 
+  const reload=async ()=>{
+    await fetchData()
+    navigate("/")
+  }
+
   const deleteHouse=()=>{
-    axios.delete(`http://localhost:3001/houses/delete/${id}`).then(()=>navigate("/"))
+    axios.delete(`http://localhost:3001/houses/delete/${id}`).then(reload)
   }
 
   return(

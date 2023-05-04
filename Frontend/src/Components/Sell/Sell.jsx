@@ -7,7 +7,7 @@ import logo from "../../images/logo.png"
 
 const url="http://localhost:3001/houses/sell"
 
-const Sell=({setData})=>{
+const Sell=({fetchData})=>{
   const [user,setUser]=useState("")
   const [password,setPassword]=useState("")
   const [title,setTitle]=useState("")
@@ -16,7 +16,8 @@ const Sell=({setData})=>{
   const [image,setImage]=useState("")
   const navigate=useNavigate()
 
-  const reload=()=>{
+  const reload=async ()=>{
+    await fetchData()
     navigate("/")
   }
 

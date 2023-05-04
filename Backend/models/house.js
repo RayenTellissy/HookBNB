@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 
-const houses=new mongoose.Schema({
+const houses=mongoose.Schema({
     title: String,
     location: String,
     price: Number,

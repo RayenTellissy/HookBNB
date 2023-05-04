@@ -24,7 +24,7 @@ module.exports={
         const { id }=req.params
         const editedHouse={
             title: req.body.title,
-            location: req.bodylocation,
+            location: req.body.location,
             price: req.body.price,
             image: req.body.image
         }
