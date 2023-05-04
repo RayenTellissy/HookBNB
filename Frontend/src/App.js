@@ -1,8 +1,10 @@
 import './App.css';
 import {Routes, Route} from "react-router-dom"
-import Main from './Components/Main/Main';
 import { useEffect, useState } from 'react';
 import axios from "axios"
+
+import Main from './Components/Main/Main.jsx';
+import Sell from './Components/Sell/Sell.jsx';
 
 const url="http://localhost:3001/houses/getAll"
 
@@ -12,11 +14,11 @@ function App() {
   useEffect(()=>{
     axios.get(url).then(res=>setData(res.data))
   },[])
-  console.log(data)
 
   return (
     <Routes>
-      <Route path="/" element={<Main data={data} />}/>
+      <Route path="/" element={<Main data={data}/>}/>
+      <Route path="/sell" element={<Sell/>}/>
     </Routes>
   )
 }

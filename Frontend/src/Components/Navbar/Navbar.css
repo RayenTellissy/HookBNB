@@ -1,0 +1,40 @@
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(72, 72, 72);
+  padding: 10px;
+  box-shadow: 2px 2px 4px black;
+  border-radius: 5px;
+}
+
+.nav-child {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#logo {
+  height: 100px;
+}
+
+#logo-title {
+  font-size: 30px;
+  font-family: "Cereal_ExtraBold";
+  color: #FF5A5F;
+  margin: 0;
+}
+
+#sell-title {
+  font-size: 20px;
+  font-family: "Cereal_ExtraBold";
+  color: #ffffff;
+  margin: 0;
+  cursor: pointer;
+}
+
+#sell-icon{
+  height: 50px;
+  padding: 10px;
+  cursor: pointer;
+}
