@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from "axios"
 
 import Main from './Components/Main/Main.jsx';
+import HouseDetails from './Components/HouseDetails/HouseDetails';
 import Sell from './Components/Sell/Sell.jsx';
 
 const url="http://localhost:3001/houses/getAll"
@@ -19,6 +20,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Main data={data}/>}/>
       <Route path="/sell" element={<Sell/>}/>
+      <Route path="house/:id" element={<HouseDetails data={data}/>}/>
     </Routes>
   )
 }

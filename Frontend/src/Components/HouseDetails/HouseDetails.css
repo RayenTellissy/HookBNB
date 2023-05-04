@@ -1,0 +1,85 @@
+.house-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.house-image-container {
+  margin-bottom: 20px;
+}
+
+.house-image {
+  max-width: 100%;
+  border-radius: 5px;
+}
+
+.house-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-family: "Cereal_ExtraBold";
+}
+
+.house-location {
+  font-style: italic;
+  margin-bottom: 20px;
+  font-family: "Cereal_Light";
+}
+
+.house-price {
+  font-family: "Cereal_Bold";
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#checkin{
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+}
+
+.reserve-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #FF5A5F;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin: 10px;
+  font-family: "Cereal_Light";
+}
+
+.reserve-button:hover {
+  background-color: #ff9195;
+}
+
+#guests{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  font-size: 16px;
+  color: black;
+  background-color: white;
+  cursor: pointer;
+  font-family: "Cereal_Light";
+}
+
+.house-edit{
+  padding: 20px;
+  border-radius: 4px;
+  font-family: "Cereal_Bold";
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.action-container{
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+}
