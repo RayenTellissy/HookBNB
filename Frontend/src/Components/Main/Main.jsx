@@ -1,12 +1,11 @@
 import React from "react";
 
-
-const App=()=>{
+const Main=()=>{
     return(
         <div>
-            hi
+            
         </div>
     )
 }
 
-export default App
+export default Main
