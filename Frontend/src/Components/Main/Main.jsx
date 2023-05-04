@@ -1,10 +1,11 @@
 import React from "react";
+import Navbar from "../Navbar/Navbar";
 
-const Main=()=>{
+const Main=({data})=>{
     return(
-        <div>
-            
-        </div>
+        <>
+            <Navbar/>
+        </>
     )
 }
 
