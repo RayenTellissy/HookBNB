@@ -3,6 +3,13 @@
   
 }
 
-#test{
-  font-size: 10px;
+#search-bar{
+  border: none;
+  border-radius: 100px;
+  background-color: rgb(145, 145, 145);
+}
+
+::placeholder{
+  color: black;
+  opacity: 50%;
 }

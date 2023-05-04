@@ -3,23 +3,21 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./HouseDetails.css"
 
-const url="http://localhost:3001/houses/find"
 
 const HouseDetails=()=>{
   const { id }=useParams()
   const navigate=useNavigate()
   const [house,setHouse]=useState({})
-  axios.get(url+`/${id}`)
+  axios.get(`http://localhost:3001/houses/find/${id}`)
   .then(res=>{setHouse(res.data)})
   const { title, location, price, image }=house
-
 
   const editHouse=()=>{
     navigate(`/edit/${id}`)
   }
 
   const deleteHouse=()=>{
-
+    axios.delete(`http://localhost:3001/houses/delete/${id}`).then(()=>navigate("/"))
   }
 
   return(

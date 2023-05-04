@@ -5,7 +5,7 @@ const Search=()=>{
   return(
     <>
       <div id="search-parent">
-        <p id="test">hi</p>
+        <input id="search-bar" type="text" placeholder="Search places..."/>
       </div>
     </>
   )

@@ -18,5 +18,21 @@ module.exports={
             image: req.body.image
         }
         houses.create(newHouse).then(house=>res.send(house))
+    },
+
+    edit: (req,res)=>{
+        const { id }=req.params
+        const editedHouse={
+            title: req.body.title,
+            location: req.bodylocation,
+            price: req.body.price,
+            image: req.body.image
+        }
+        houses.findByIdAndUpdate(id,editedHouse).then(house=>res.send(house))
+    },
+
+    remove: (req,res)=>{
+        const { id }=req.params
+        houses.findByIdAndDelete(id).then(house=>res.send(house))
     }
 }
