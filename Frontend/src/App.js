@@ -17,6 +17,7 @@ function App() {
   const [filtered,setFiltered]=useState([])
   const [user,setUser]=useState("")
   const [password,setPassword]=useState("")
+  const [isLogged,setIsLogged]=useState(false)
   const navigate=useNavigate()
 
   const fetchData=()=>{
@@ -31,6 +32,7 @@ function App() {
       if(res.data){
         navigate("/")
         alert(`welcome ${user}`)
+        setIsLogged(true)
       }
     })
   }
@@ -49,7 +51,7 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Main data={filtered} filterData={filterData}/>}/>
+      <Route path="/" element={<Main data={filtered} filterData={filterData} isLogged={isLogged}/>}/>
       <Route path="/sell" element={<Sell fetchData={fetchData} user={user} password={password}/>}/>
       <Route path="/house/:id" element={<HouseDetails data={data} fetchData={fetchData}/>}/>
       <Route path='/edit/:id' element={<Edit fetchData={fetchData}/>}/>

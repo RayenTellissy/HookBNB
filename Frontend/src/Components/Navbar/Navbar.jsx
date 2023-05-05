@@ -7,7 +7,7 @@ import "./Navbar.css"
 import logo from "../../images/logo.png"
 import sell from "../../images/sell.jpg"
 
-const Navbar=({filterData})=>{
+const Navbar=({filterData,isLogged})=>{
   const navigate=useNavigate()
   
   const redirectSell=()=>{
@@ -27,8 +27,10 @@ const Navbar=({filterData})=>{
 
       <div id="search-container">
         {<Search filterData={filterData}/>}
-        <button className="nav-login" onClick={()=>navigate("/login")}>Login</button>
-        <button className="nav-signup" onClick={()=>navigate("/signup")}>Signup</button>
+        {!isLogged && <>
+          <button className="nav-login" onClick={()=>navigate("/login")}>Login</button>
+          <button className="nav-signup" onClick={()=>navigate("/signup")}>Signup</button>
+        </>}
       </div>
 
       <motion.div whileHover={{scale: 1.1}} className="nav-child" onClick={redirectSell}>
