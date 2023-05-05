@@ -1,4 +1,5 @@
 const houses=require("../models/house")
+const users=require("../models/user")
 
 module.exports={
     getAll: (req,res)=>{
@@ -17,7 +18,9 @@ module.exports={
             price: req.body.price,
             image: req.body.image
         }
-        houses.create(newHouse).then(house=>res.send(house))
+        houses.create(newHouse)
+        .then(house=>users.findOneAndUpdate({_id: req.body.ownerid},{$push: {rents: house}}))
+        .then(house=>res.send(house))
     },
 
     edit: (req,res)=>{
