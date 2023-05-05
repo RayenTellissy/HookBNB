@@ -38,3 +38,46 @@
   padding: 10px;
   cursor: pointer;
 }
+
+#search-container{
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-signup{
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+  font-size: "Cereal_Light";
+}
+
+.nav-signup:hover{
+  background-color: #e54c4f;
+  font-size: "Cereal_Light";
+}
+
+.nav-login{
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+  font-size: "Cereal_Light";
+  margin: 5px;
+  margin-left: 25%;
+}
+
+.nav-login:hover{
+  background-color: #e54c4f;
+  font-size: "Cereal_Light";
+}

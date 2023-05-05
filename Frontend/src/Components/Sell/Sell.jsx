@@ -32,6 +32,10 @@ const Sell=({fetchData,user,password})=>{
         axios.post("http://localhost:3001/houses/sell",newHouse)
         .then(house=>axios.put(`http://localhost:3001/users/edit/${newHouse.ownerid}`,{rents: house.data})).then(reload)
       }
+      else{
+        alert("not logged in")
+        navigate("/login")
+      }
     })
   }
 

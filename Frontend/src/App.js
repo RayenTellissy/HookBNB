@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route} from "react-router-dom"
+import { useNavigate, Routes, Route } from "react-router-dom"
 import { useEffect, useState } from 'react';
 import axios from "axios"
 
@@ -17,6 +17,7 @@ function App() {
   const [filtered,setFiltered]=useState([])
   const [user,setUser]=useState("")
   const [password,setPassword]=useState("")
+  const navigate=useNavigate()
 
   const fetchData=()=>{
     axios.get(url).then(res=>setData(res.data))
@@ -25,6 +26,13 @@ function App() {
   const login=(user,pass)=>{
     setUser(user)
     setPassword(pass)
+    axios.get(`http://localhost:3001/users/getOne?user=${user}&password=${password}`)
+    .then(res=>{
+      if(res.data){
+        navigate("/")
+        alert(`welcome ${user}`)
+      }
+    })
   }
 
   useEffect(()=>{

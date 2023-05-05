@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import "./Login.css"
 
 function Login({login}) {
   const [username,setUsername]=useState("")
   const [password,setPassword]=useState("")
-  const navigate=useNavigate()
 
   const handleSubmit=()=>{
     login(username,password)
-    navigate("/")
   }
   return (
     <div className="login-container">

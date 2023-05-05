@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion"
 import Search from "../Search/Search";
 import "./Navbar.css"
+
 import logo from "../../images/logo.png"
 import sell from "../../images/sell.jpg"
 
@@ -24,7 +25,11 @@ const Navbar=({filterData})=>{
         <h3 id="logo-title">HookBNB</h3>
       </div>
 
-      {<Search filterData={filterData}/>}
+      <div id="search-container">
+        {<Search filterData={filterData}/>}
+        <button className="nav-login" onClick={()=>navigate("/login")}>Login</button>
+        <button className="nav-signup" onClick={()=>navigate("/signup")}>Signup</button>
+      </div>
 
       <motion.div whileHover={{scale: 1.1}} className="nav-child" onClick={redirectSell}>
         <p id="sell-title">HookBNB your home</p>

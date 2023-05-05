@@ -10,12 +10,17 @@ function Signup() {
   const navigate=useNavigate()
 
   const handleSubmit=()=>{
-    const newUser={
-      name: name,
-      user: username,
-      password: password
+    if(username.length<3 || password.length<6){
+      alert("Type Longer input...")
     }
-    axios.post(`http://localhost:3001/users/add`,newUser).then(()=>navigate("/"))
+    else{
+      const newUser={
+        name: name,
+        user: username,
+        password: password
+      }
+      axios.post(`http://localhost:3001/users/add`,newUser).then(()=>navigate("/"))
+    }
   }
 
 

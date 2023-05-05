@@ -25,6 +25,7 @@
 }
 
 #signup-button{
+  font-family: "Cereal_Light";
   background-color: #ff5a5f;
   color: #fff;
   border: none;
@@ -38,7 +39,23 @@
 
 #signup-button:hover{
   background-color: #e54c4f;
-  font-size: "Cereal_Light";
+}
+
+#login-button{
+  font-family: "Cereal_Light";
+  background-color: #ff5a5f;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 20px;
+}
+
+#login-button:hover{
+  background-color: #e54c4f;
 }
 
 .signup-container p{
