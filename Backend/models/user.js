@@ -6,7 +6,8 @@ const users={
   phone: Number,
   user: String,
   password: String,
-  rents: Array
+  rents: Array,
+  ownerid: String
 }
 
 const userModel=mongoose.model("users",users)
