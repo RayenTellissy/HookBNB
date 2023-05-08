@@ -13,16 +13,24 @@ function Login() {
   const navigate=useNavigate()
 
   const handleLogin=()=>{
-    axios.get(`http://localhost:3001/users/getOne?user=${user}&password=${password}`)
+    const logUser={
+      user:user,
+      password:password
+    }
+    console.log(logUser)
+    axios.post(`http://localhost:3001/users/login`,logUser)
     .then(res=>{
-      if(res.data){
+      if(res.data==="cannot find user"){
+        alert(res.data)
+      }
+      else if(res.data==="incorrect password"){
+        alert(res.data)
+      }
+      else{
         setCurrentUser(res.data)
         navigate("/")
         alert(`welcome ${res.data.name}`)
         setIsLogged(true)
-      }
-      else{
-        alert("incorrect account")
       }
     })
   }

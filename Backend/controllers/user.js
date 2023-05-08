@@ -1,22 +1,36 @@
 const users=require("../models/user")
+const bcrypt=require("bcrypt")
 
 module.exports={
   getAll: (req,res)=>{
     users.find().then(users=>res.send(users))
   },
 
-  getOne: (req,res)=>{
-    const user=req.query.user
-    const password=req.query.password
-    users.findOne({user: user, password: password}).then(user=>res.send(user))
+  login: (req,res)=>{
+    const user=req.body.user
+    const password=req.body.password
+    users.findOne({user: user}).then(async (user)=>{
+      if(user){
+        if(await bcrypt.compare(password,user.password)){
+          res.send(user)
+        }
+        else{
+          res.send("incorrect password")
+        }
+      }
+      else{
+        res.send("cannot find user")
+      }
+    })
   },
   
-  add: (req,res)=>{
+  add: async (req,res)=>{
+    const password=await bcrypt.hash(req.body.password,10)
     const newUser={
       name: req.body.name,
       balance: 0,
       user: req.body.user,
-      password: req.body.password
+      password: password
     }
     users.create(newUser).then(user=>res.send(user))
   },
