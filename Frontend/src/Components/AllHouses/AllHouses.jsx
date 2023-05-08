@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AllHouses.css"
 import OneHouse from "../OneHouse/OneHouse";
+import { Context } from "../Context/Context";
 
-const AllHouses=({data})=>{
+const AllHouses=()=>{
+  const { data }=useContext(Context)
   return(
     <>
       <div id="parent-house">

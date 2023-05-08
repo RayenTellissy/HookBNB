@@ -34,7 +34,7 @@
 }
 
 #sell-icon{
-  height: 50px;
+  height: 38px;
   padding: 10px;
   cursor: pointer;
 }
@@ -53,13 +53,11 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 20px;
   font-size: "Cereal_Light";
 }
 
 .nav-signup:hover{
   background-color: #e54c4f;
-  font-size: "Cereal_Light";
 }
 
 .nav-login{
@@ -71,7 +69,6 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 20px;
   font-size: "Cereal_Light";
   margin: 5px;
   margin-left: 25%;
@@ -79,5 +76,4 @@
 
 .nav-login:hover{
   background-color: #e54c4f;
-  font-size: "Cereal_Light";
 }

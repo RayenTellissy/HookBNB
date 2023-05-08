@@ -1,6 +1,6 @@
 import './App.css';
-import { useNavigate, Routes, Route } from "react-router-dom"
-import { useEffect, useState } from 'react';
+import { Routes, Route } from "react-router-dom"
+import { useContext, useEffect, useState } from 'react';
 import axios from "axios"
 
 import Main from './Components/Main/Main.jsx';
@@ -9,41 +9,12 @@ import Sell from './Components/Sell/Sell.jsx';
 import Edit from './Components/Edit/Edit';
 import Signup from './Components/Auth/Signup/Signup';
 import Login from './Components/Auth/Login/Login';
-
-const url="http://localhost:3001/houses/getAll"
+import { Context } from './Components/Context/Context';
+import RentList from './Components/RentList/RentList';
 
 function App() {
-  const [data,setData]=useState([])
+  const { isLogged, fetchData, data }=useContext(Context)
   const [filtered,setFiltered]=useState([])
-  const [user,setUser]=useState("")
-  const [password,setPassword]=useState("")
-  const [isLogged,setIsLogged]=useState(false)
-  const navigate=useNavigate()
-
-  const fetchData=()=>{
-    axios.get(url).then(res=>setData(res.data))
-  }
-
-  const login=(user,pass)=>{
-    setUser(user)
-    setPassword(pass)
-    axios.get(`http://localhost:3001/users/getOne?user=${user}&password=${password}`)
-    .then(res=>{
-      if(res.data){
-        navigate("/")
-        alert(`welcome ${user}`)
-        setIsLogged(true)
-      }
-    })
-  }
-
-  useEffect(()=>{
-    fetchData()
-  },[])
-
-  useEffect(()=>{
-    console.log(user,password)
-  },[user,password])
 
   const filterData=(query)=>{
     setFiltered(data.filter(e=>e.title.toUpperCase().includes(query.toUpperCase()) || e.location.toUpperCase().includes(query.toUpperCase())))
@@ -51,12 +22,13 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Main data={filtered} filterData={filterData} isLogged={isLogged}/>}/>
-      <Route path="/sell" element={<Sell fetchData={fetchData} user={user} password={password}/>}/>
-      <Route path="/house/:id" element={<HouseDetails data={data} fetchData={fetchData}/>}/>
-      <Route path='/edit/:id' element={<Edit fetchData={fetchData}/>}/>
+      <Route path="/" element={<Main/>}/>
+      <Route path="/sell" element={<Sell/>}/>
+      <Route path="/house/:id" element={<HouseDetails/>}/>
+      <Route path='/edit/:id' element={<Edit/>}/>
       <Route path="/signup" element={<Signup/>}/>
-      <Route path="/login" element={<Login login={login}/>}/>
+      <Route path="/login" element={<Login/>}/>
+      <Route path="/mylist" element={<RentList/>} />
     </Routes>
   )
 }

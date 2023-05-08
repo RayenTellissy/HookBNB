@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./Edit.css"
 
-const Edit=({fetchData})=>{
+const Edit=()=>{
   const { id }=useParams()
   const [title,setTitle]=useState("")
   const [location,setLocation]=useState("")
@@ -11,10 +11,15 @@ const Edit=({fetchData})=>{
   const [image,setImage]=useState("")
   const navigate=useNavigate()
 
-  const reload=async ()=>{
-    await fetchData()
-    navigate("/")
-  }
+  useEffect(()=>{
+    axios.get(`http://localhost:3001/houses/find/${id}`)
+    .then(house=>{
+      setTitle(house.data.title)
+      setLocation(house.data.location)
+      setPrice(house.data.price)
+      setImage(house.data.image)
+    })
+  },[])
 
   const handleSubmit=()=>{
     const editedHouse={
@@ -23,17 +28,19 @@ const Edit=({fetchData})=>{
       price: price,
       image: image
     }
-    axios.put(`http://localhost:3001/houses/edit/${id}`,editedHouse).then(reload)
+    axios.put(`http://localhost:3001/houses/edit/${id}`,editedHouse).then(()=>navigate("/"))
   }
 
   return(
     <div id="edit-container">
+      <img src={image} className="house-image" alt=""/>
       <h2>Edit House</h2>
         <div>
           <label className="edit-label" htmlFor="title">Title:</label>
           <input
             className="edit-input"
             type="text"
+            value={title}
             onChange={e=>setTitle(e.target.value)}
             required
           />
@@ -43,6 +50,7 @@ const Edit=({fetchData})=>{
           <input
             className="edit-input"
             type="text"
+            value={location}
             onChange={e=>setLocation(e.target.value)}
             required
           />
@@ -52,6 +60,7 @@ const Edit=({fetchData})=>{
           <input
             className="edit-input"
             type="number"
+            value={price}
             onChange={e=>setPrice(e.target.value)}
             required
           />
@@ -61,6 +70,7 @@ const Edit=({fetchData})=>{
           <input
             className="edit-input"
             type="string"
+            value={image}
             onChange={e=>setImage(e.target.value)}
             required
           />

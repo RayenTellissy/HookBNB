@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios"
+import { Context } from "../Context/Context";
 import "./Sell.css"
 
 import logo from "../../images/logo.png"
 
 
-const Sell=({fetchData,user,password})=>{
+const Sell=()=>{
+  const { user, password }=useContext(Context)
   const [title,setTitle]=useState("")
   const [location,setLocation]=useState("")
   const [price,setPrice]=useState("")
   const [image,setImage]=useState("")
   const navigate=useNavigate()
-
-  const reload=async ()=>{
-    await fetchData()
-    navigate("/")
-  }
 
   const handleSubmit=()=>{
     axios.get(`http://localhost:3001/users/getOne?user=${user}&password=${password}`)
@@ -29,7 +26,7 @@ const Sell=({fetchData,user,password})=>{
           image: image,
           ownerid: res.data._id
         }
-        axios.post("http://localhost:3001/houses/sell",newHouse).then(reload)
+        axios.post("http://localhost:3001/houses/sell",newHouse).then(()=>navigate("/"))
       }
       else{
         alert("not logged in")
@@ -41,7 +38,7 @@ const Sell=({fetchData,user,password})=>{
   return(
     <div>
       <div>
-      <div id="sell-logo" onClick={reload}>
+      <div id="sell-logo" onClick={()=>navigate("/")}>
         <img src={logo} alt=""/>
         <p>HookBNB</p>
       </div>

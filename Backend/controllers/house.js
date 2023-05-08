@@ -37,5 +37,16 @@ module.exports={
     remove: (req,res)=>{
         const { id }=req.params
         houses.findByIdAndDelete(id).then(house=>res.send(house))
+    },
+
+    search: (req,res)=>{
+        const query=req.query.query
+        const toSearch={
+            $or: [
+                {title:{$regex:new RegExp(query, 'i')}},
+                {location:{$regex:new RegExp(query, 'i')}}
+            ]
+        }        
+        houses.find(toSearch).then(houses=>res.send(houses))
     }
 }

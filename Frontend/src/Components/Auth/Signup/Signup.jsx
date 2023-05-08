@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./Signup.css"
+import Navbar from '../../Navbar/Navbar';
 
 function Signup() {
   const [name,setName]=useState("")
@@ -25,6 +26,8 @@ function Signup() {
 
 
   return (
+    <>
+    <Navbar/>
     <div className="signup-container">
       <h2>Sign Up</h2>
         <div className="form-group">
@@ -59,6 +62,7 @@ function Signup() {
         Already have an account? <Link to="/login">Log in</Link>
       </p>
     </div>
+    </>
   );
 }
 

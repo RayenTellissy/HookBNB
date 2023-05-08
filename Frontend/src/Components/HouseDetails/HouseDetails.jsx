@@ -1,28 +1,27 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "./HouseDetails.css"
+import { Context } from "../Context/Context";
 
 
-const HouseDetails=({fetchData})=>{
+const HouseDetails=()=>{
   const { id }=useParams()
   const navigate=useNavigate()
   const [house,setHouse]=useState({})
-  axios.get(`http://localhost:3001/houses/find/${id}`)
-  .then(res=>{setHouse(res.data)})
   const { title, location, price, image }=house
+
+  useEffect(()=>{
+    axios.get(`http://localhost:3001/houses/find/${id}`)
+    .then(res=>{setHouse(res.data)})
+  },[])
 
   const editHouse=()=>{
     navigate(`/edit/${id}`)
   }
 
-  const reload=async ()=>{
-    await fetchData()
-    navigate("/")
-  }
-
   const deleteHouse=()=>{
-    axios.delete(`http://localhost:3001/houses/delete/${id}`).then(reload)
+    axios.delete(`http://localhost:3001/houses/delete/${id}`).then(()=>navigate("/"))
   }
 
   return(

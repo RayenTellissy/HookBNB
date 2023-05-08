@@ -6,6 +6,10 @@
   max-width: 500px;
 }
 
+.signup-container p{
+  font-family: "Cereal_Light";
+}
+
 .form-group{
   display: flex;
   flex-direction: column;
